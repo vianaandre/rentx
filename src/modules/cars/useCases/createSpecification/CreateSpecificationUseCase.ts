@@ -1,10 +1,10 @@
-import { inject, injectable } from "tsyringe";
-
-import { AppError } from "../../../../errors/AppError";
 import {
   ISpecificationsRepository,
   ISpecificationDTO,
-} from "../../repositories/ISpecificationsRepository";
+} from "@modules/cars/repositories/ISpecificationsRepository";
+import { inject, injectable } from "tsyringe";
+
+import { AppError } from "@shared/errors/AppError";
 
 @injectable()
 class CreateSpecificationUseCase {
