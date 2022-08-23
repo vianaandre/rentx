@@ -3,16 +3,20 @@ import { ListSpecificationsController } from "@modules/cars/useCases/listSpecifi
 import { Router } from "express";
 
 import { ensureAuthorization } from "@shared/infra/http/middlewares/ensureAuthorization";
+import { ensureIsAdmin } from "@shared/infra/http/middlewares/ensureIsAdmin";
 
 const specificationsRoutes = Router();
 
 const createSpecificationController = new CreateSpecificationsController();
 const listSpecificationsController = new ListSpecificationsController();
 
-specificationsRoutes.use(ensureAuthorization);
-
 specificationsRoutes.get("/", listSpecificationsController.handle);
 
-specificationsRoutes.post("/", createSpecificationController.handle);
+specificationsRoutes.post(
+  "/",
+  ensureAuthorization,
+  ensureIsAdmin,
+  createSpecificationController.handle
+);
 
 export { specificationsRoutes };

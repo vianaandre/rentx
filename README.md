@@ -2,7 +2,7 @@
 **RNF** => Requisitos não funcionais
 **RN** => Regra de negócio -> tem haver com os requisitos funcionais de uma forma mais aprofundada
 
-# Cadastro de Carros [ ]
+# Cadastro de Carros [ x ]
 **RF**
 Deve ser possível cadastrar um novo carro.
 
@@ -11,7 +11,7 @@ Não deve ser possível cadastrar um carro com uma placa já existente.
 O carro deve ser cadastrado, por padrão, com disponibilidade.
 * O usuário reponsável pelo cadastro deve ser um usuário administrador.
 
-# Listagem de Carros [ ]
+# Listagem de Carros [ x ]
 **RF**
 Deve ser possível listar todos os carros disponíveis.
 Deve ser possível listar todo os carros disponíveis pelo nome da categoria.
