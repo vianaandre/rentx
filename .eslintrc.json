@@ -59,7 +59,8 @@
         { "devDependencies": ["**/*.spec.js"] }
         ],
         "no-use-before-define": "off",
-        "no-return-await": "off"
+        "no-return-await": "off",
+        "max-len": "off"
     },
     "settings": {
         "import/resolver": {

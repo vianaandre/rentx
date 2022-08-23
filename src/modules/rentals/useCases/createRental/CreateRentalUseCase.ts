@@ -1,3 +1,4 @@
+import { ICarsRepository } from '@modules/cars/repositories/ICarsRepository';
 import { Rental } from '@modules/rentals/infra/typeorm/entities/Rental';
 import { IRentalsRepository } from '@modules/rentals/repositories/IRentalsRepository';
 import { inject, injectable } from 'tsyringe';
@@ -18,6 +19,8 @@ class CreateRentalUseCase {
         private rentalsRepository: IRentalsRepository,
         @inject('DayjsDateProvider')
         private dateProvider: IDateProvider,
+        @inject('CarsRepository')
+        private carsRepository: ICarsRepository,
   ) {}
 
   async execute({ car_id, expected_return_date, user_id }: IRequest): Promise<Rental> {
@@ -46,6 +49,11 @@ class CreateRentalUseCase {
       car_id,
       expected_return_date,
     });
+
+    await this.carsRepository.updateAvailable(
+      car_id,
+      false,
+    );
 
     return rental;
   }
