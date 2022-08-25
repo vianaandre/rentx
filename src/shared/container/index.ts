@@ -1,6 +1,8 @@
 import '@shared/container/providers';
 import { UserRepository } from '@modules/account/infra/typeorm/repositories/UserRepository';
+import { UsersTokensRepository } from '@modules/account/infra/typeorm/repositories/UsersTokensRepository';
 import { IUserRepository } from '@modules/account/repositories/IUserRepository';
+import { IUsersTokensRepository } from '@modules/account/repositories/IUsersTokensRepository';
 import { CarsImageRepository } from '@modules/cars/infra/typeorm/repositories/CarsImageRepository';
 import { CarsRepository } from '@modules/cars/infra/typeorm/repositories/CarsRepository';
 import { CategoriesRepository } from '@modules/cars/infra/typeorm/repositories/CategoriesRepository';
@@ -36,3 +38,9 @@ container.registerSingleton<ICarsImageRepository>('CarsImageRepository', CarsIma
 
 // IRentalRepository
 container.registerSingleton<IRentalsRepository>('RentalsRepository', RentalsRepository);
+
+// IUsersTokensRepository
+container.registerSingleton<IUsersTokensRepository>(
+  'UsersTokensRepository',
+  UsersTokensRepository,
+);

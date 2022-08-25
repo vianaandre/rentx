@@ -1,7 +1,7 @@
-import { ICategoriesRepository } from "@modules/cars/repositories/ICategoriesRepository";
-import { injectable, inject } from "tsyringe";
+import { ICategoriesRepository } from '@modules/cars/repositories/ICategoriesRepository';
+import { injectable, inject } from 'tsyringe';
 
-import { AppError } from "@shared/errors/AppError";
+import { AppError } from '@shared/errors/AppError';
 
 interface IRequest {
   name: string;
@@ -11,17 +11,17 @@ interface IRequest {
 @injectable()
 class CreateCategoryUseCase {
   constructor(
-    @inject("CategoriesRepository")
-    private categoriesRepository: ICategoriesRepository
+    @inject('CategoriesRepository')
+    private categoriesRepository: ICategoriesRepository,
   ) {}
 
   async execute({ name, description }: IRequest): Promise<void> {
     const categoryAlreadExist = await this.categoriesRepository.findByName(
-      name
+      name,
     );
 
     if (categoryAlreadExist) {
-      throw new AppError("Alread Exist", 400);
+      throw new AppError('Alread Exist', 400);
     }
 
     await this.categoriesRepository.create({ name, description });

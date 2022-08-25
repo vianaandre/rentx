@@ -1,8 +1,8 @@
-import { Car } from "@modules/cars/infra/typeorm/entities/Car";
-import { ICarsRepository } from "@modules/cars/repositories/ICarsRepository";
-import { inject, injectable } from "tsyringe";
+import { Car } from '@modules/cars/infra/typeorm/entities/Car';
+import { ICarsRepository } from '@modules/cars/repositories/ICarsRepository';
+import { inject, injectable } from 'tsyringe';
 
-import { AppError } from "@shared/errors/AppError";
+import { AppError } from '@shared/errors/AppError';
 
 interface IRequest {
   name: string;
@@ -17,17 +17,17 @@ interface IRequest {
 @injectable()
 class CreateCarUseCase {
   constructor(
-    @inject("CarsRepository")
-    private carsRepository: ICarsRepository
+    @inject('CarsRepository')
+    private carsRepository: ICarsRepository,
   ) {}
 
   async execute(data: IRequest): Promise<Car> {
     const alreadExist = await this.carsRepository.findByLicensePlate(
-      data.license_plate
+      data.license_plate,
     );
 
     if (alreadExist) {
-      throw new AppError("Car alread Exist", 404);
+      throw new AppError('Car alread Exist', 404);
     }
 
     const car = await this.carsRepository.create(data);
