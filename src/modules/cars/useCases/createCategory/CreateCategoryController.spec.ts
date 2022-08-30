@@ -14,7 +14,7 @@ describe('Create Category Controller', () => {
     await connection.runMigrations();
 
     const id = uuidv4();
-    const password = await hash('admin', 8);
+    const password = await hash('rentx', 8);
 
     await connection.query(
       `INSERT INTO USERS(id, name, password, email, "isAdmin", created_at, driver_license)
@@ -31,10 +31,10 @@ describe('Create Category Controller', () => {
   it('should be able to create a new category', async () => {
     const responseToken = await request(app).post('/authenticate/session').send({
       email: 'admin@rentx.com.br',
-      password: 'admin',
+      password: 'rentx',
     });
 
-    const { token } = responseToken.body;
+    const { refresh_token } = responseToken.body;
 
     const response = await request(app)
       .post('/categories')
@@ -42,7 +42,7 @@ describe('Create Category Controller', () => {
         name: 'Name Category Supertest',
         description: 'Description Category Supertest.',
       }).set({
-        Authorization: `Bearer ${token}`,
+        Authorization: `Bearer ${refresh_token}`,
       });
 
     expect(response.status).toBe(201);
@@ -54,7 +54,7 @@ describe('Create Category Controller', () => {
       password: 'admin',
     });
 
-    const { token } = responseToken.body;
+    const { refresh_token } = responseToken.body;
 
     const response = await request(app)
       .post('/categories')
@@ -62,7 +62,7 @@ describe('Create Category Controller', () => {
         name: 'Name Category Supertest',
         description: 'Description Category Supertest.',
       }).set({
-        Authorization: `Bearer ${token}`,
+        Authorization: `Bearer ${refresh_token}`,
       });
 
     expect(response.status).toBe(400);

@@ -14,11 +14,11 @@ describe('Create Category Controller', () => {
     await connection.runMigrations();
 
     const id = uuidv4();
-    const password = await hash('admin', 8);
+    const password = await hash('rentx', 8);
 
     await connection.query(
       `INSERT INTO USERS(id, name, password, email, "isAdmin", created_at, driver_license)
-          values('${id}', 'admin', '${password}', 'admin@rentx.com.br', true, 'now()', 'XXXXXX')
+          values('${id}', 'rentx', '${password}', 'admin@rentx.com.br', true, 'now()', 'XXXXXX')
       `,
     );
   });
@@ -31,10 +31,10 @@ describe('Create Category Controller', () => {
   it('should be able to list all categories', async () => {
     const responseToken = await request(app).post('/authenticate/session').send({
       email: 'admin@rentx.com.br',
-      password: 'admin',
+      password: 'rentx',
     });
 
-    const { token } = responseToken.body;
+    const { refresh_token } = responseToken.body;
 
     await request(app)
       .post('/categories')
@@ -42,7 +42,7 @@ describe('Create Category Controller', () => {
         name: 'Name Category Supertest',
         description: 'Description Category Supertest.',
       }).set({
-        Authorization: `Bearer ${token}`,
+        Authorization: `Bearer ${refresh_token}`,
       });
 
     const response = await request(app).get('/categories');
