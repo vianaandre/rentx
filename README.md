@@ -21,7 +21,7 @@ Deve ser possível listar todo os carros disponíveis pela marca do carro.
 **RN**
 O usuário não precisa estar logado no sistema.
 
-# Criação de Especificação no carro [ ]
+# Criação de Especificação no carro [ x ]
 **RF**
 Deve ser possível cadastrar uma especifiação para um carro.
 Deve ser possível listar todas as especifiações.
@@ -32,7 +32,7 @@ Não deve ser possível cadastrar uma especificação para um carro que não est
 Não deve ser possível cadastrar uma especifiação já existente para o mesmo carro.
 O usuário reponsável pelo cadastro deve ser administrador.
 
-# Cadastro de imagens do carro [ ]
+# Cadastro de imagens do carro [ x ]
 **RF** 
 Deve ser possível cadastrar a imagem do carro.
 Deve ser possível listar todos os carros.
@@ -44,7 +44,7 @@ Utilizar o multer para o upload dos arquivos.
 O usuário poderá cadastrar mais de uma imagem para o mesmo carro.
 O usuário responsável pelo cadastro deve ser um usuário administrador.
 
-# Aluguel de carro [ ]
+# Aluguel de carro [ x ]
 **RF**
 Deve ser possível cadastrar um aluguel.
 
