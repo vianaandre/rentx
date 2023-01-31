@@ -55,7 +55,7 @@ Não deve ser possível cadastrar um novo aluguel caso já exista um aberto para
 Ao realizar um aluguel, o status do carro deverá ser alterado para indisponível. 
 Usuário deve estar logado.
 
-# Devolução de carro
+# Devolução de carro [ x ]
 **RF**
 Deve ser possível realizar a devolução de um carro
 
@@ -69,7 +69,7 @@ aos dias de atraso.
 Caso haja multa, deverá ser somado ao total do aluguel.
 Usuário deve estar logado.
 
-# Recuper Senha
+# Recuper Senha [ x ]
 **RF**
 - Deve ser possível o usuário recuperar a senha informando o E-mail
 - O usuário deve receber um e-mail com o passo a passo para a recuperação da senha
